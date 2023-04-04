@@ -12,13 +12,10 @@ const server = http.createServer((req, res) => {
   if (fs.existsSync(publicPath)) {
     if (fs.statSync(publicPath).isDirectory()) {
       if (fs.existsSync(path.join(publicPath, "index.html"))) {
-        fs.readFile(
-          path.join(publicPath, "index.html"),
-          (err, data) => {
-            if (err) throw err;
-            res.end(data);
-          }
-        );
+        fs.readFile(path.join(publicPath, "index.html"), (err, data) => {
+          if (err) throw err;
+          res.end(data);
+        });
       } else {
         fs.readdir(publicPath, (err, files) => {
           if (err) throw err;
